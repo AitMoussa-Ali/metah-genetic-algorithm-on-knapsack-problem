@@ -4,14 +4,15 @@ class Sac_a_dos:
     # constructor of the class 
     #assigne the dataset to the Objets and the maximum number of individus in a population
     def __init__(self, Objets, ndiv, width) -> None:
-        self.Objets = Objets
-        self.ndiv = ndiv
-        self.population = []
-        self.width = width
+        self.Objets = Objets #values assigned for each object, look at the dataset
+        self.ndiv = ndiv #number of individus
+        self.population = [] #The first population (solutions)
+        self.width = width #Maximum width
         self.purposes = [] #An array to save the fitness values of each individu
         
         
     #Lets define a function who can generate a population of ndiv individus
+    #this function allow us to create our first set of solutions (population)
     def generate_population(self):
         total_obj = len(self.Objets)
         for i in range(0,self.ndiv):
@@ -23,26 +24,29 @@ class Sac_a_dos:
 
 
     #Now we must define our function of fitness
-    #If it's 0 then it's not considered as a solution
+    #If it's 0 then it's not considered as a solution (false)
+    #pour comprendre cette fonction, notre probleme consiste a maximiser la valeur et minimiser le poids
+    #et donc les solutions qu'on vas prendre, on vas prendre que les solutions qui respecte la contrainte du poids
+    #alors le fitness est definie seulement sur la valeur car on chercher a la maximiser
     def fitness(self):
-        k=0
-        for p in self.population :
+        for p in self.population : 
             total_width = 0
             total_value = 0
             for i in range(0,len(p)):
                 if(p[i] != 0):
-                    total_width = total_width+self.Objets[i,0]
-                    total_value = total_value+self.Objets[i,1]
-            k+=1  
-            if(total_width>self.width):
+                    total_width = total_width+self.Objets[i,0] #first column represente the width
+                    total_value = total_value+self.Objets[i,1] #second column represente the value
+                    
+            if(total_width>self.width): #si la solution proposer depasse ne respecte pas la contrainte du poids alors ca valeur de fitness vas recevoir 0
                 self.purposes.append(0)
             else:
-                self.purposes.append(total_value)
+                self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
     
     
-    #Now let's define a new function that'a select a couple of individu with a (la methode de roulette) 
+    #Cette fonction permet de selectionner un individu avec une proba generer par random
+    #On utilise la methode de selction par roulette
     def select(self):
-        #first we must generate a number between 0 and sum of fitness 
+        #first we must generate a number between 0 and sum of fitness (totale de fitness)
         r = random.randint(0,sum(self.purposes))
         s=0
         i=0
@@ -52,6 +56,7 @@ class Sac_a_dos:
         return self.population[i-1]
         
         
+    #cette fonction permet de selectionner deux parents qui soit toujours different pour garantir une bonne convergence
     def selectParents(self):
         parent1 = self.select()
         parent2 = self.select()
@@ -61,6 +66,9 @@ class Sac_a_dos:
         parents = {'firstParent' : parent1, 'secondParent' : parent2}
         return parents
     
+    
+    #Cette fonction pour l'instant permet d'afficher les differents resultats des fonctions precedente
+    #Vous pouvez refaire l'execution plusieurs fois
     def printing(self):
         print("the data set")
         print(self.Objets)
