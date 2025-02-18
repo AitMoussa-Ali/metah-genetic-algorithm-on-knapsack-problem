@@ -9,7 +9,8 @@ class Sac_a_dos:
         self.population = [] #The first population (solutions)
         self.width = width #Maximum width
         self.purposes = [] #An array to save the fitness values of each individu
-        
+        self.crossoverRate = 1 #The rate of crossover
+        self.mutationRate = 0.3 #The rate of mutation
         
     #Lets define a function who can generate a population of ndiv individus
     #this function allow us to create our first set of solutions (population)
@@ -42,21 +43,24 @@ class Sac_a_dos:
                 if(p[i] != 0):
                     total_width = total_width+self.Objets[i,0] #first column represente the width
                     total_value = total_value+self.Objets[i,1] #second column represente the value
-                    
-            self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
+            if(total_width <= self.width):
+                self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
+            else:
+                self.purposes.append(0) #dans le cas ou elle ne respecte pas la contrainte on rajoute 0 a l'index
     
     
     #Cette fonction permet de selectionner un individu avec une proba generer par random
     #On utilise la methode de selction par roulette
     def select(self):
-        #first we must generate a number between 0 and sum of fitness (totale de fitness)
-        r = random.randint(0,sum(self.purposes))
-        s=0
-        i=0
-        while(s < r and i < len(self.purposes)):
-            s=s+self.purposes[i]
-            i+=1
-        return self.population[i-1]
+        if sum(self.purposes) == 0:  # vérifier si la somme des fitness est nulle
+            return random.choice(self.population)  # Sélectionne un individu aléatoire
+        r = random.randint(0, sum(self.purposes))
+        s = 0
+        i = 0
+        while s < r and i < len(self.purposes):
+            s += self.purposes[i]
+            i += 1
+        return self.population[i - 1]
         
         
     #cette fonction permet de selectionner deux parents qui soit toujours different pour garantir une bonne convergence
@@ -68,8 +72,89 @@ class Sac_a_dos:
         
         parents = {'firstParent' : parent1, 'secondParent' : parent2}
         return parents
+
+    def crossover(self):
+        r = random.uniform(0, 1)
+        childs = []
+        if r < self.crossoverRate:
+            parents = self.selectParents()
+            parent1 = parents['firstParent']
+            parent2 = parents['secondParent']
+                
+            # Assure un point de croisement raisonnable, éviter la fin ou le début
+            crossover_point = random.randint(1, len(parent1) - 2)  
     
+            # Créer les enfants via crossover
+            child1 = parent1[:crossover_point] + parent2[crossover_point:]
+            child2 = parent2[:crossover_point] + parent1[crossover_point:]
     
+            
+            childs.append(child1)
+            childs.append(child2)
+        
+        return childs
+        
+    def mutation(self,childs):
+        r = random.uniform(0,1)
+        if(r < self.mutationRate):
+            child1 = childs[0]
+            child2 = childs[1]
+            mutation_point = random.randint(0, len(child1) - 1)
+            child1[mutation_point] = 1 - child1[mutation_point]
+            child2[mutation_point] = 1 - child2[mutation_point]
+        
+        return childs   
+    
+    def GA_Algorithm(self,max_generations,stagnation_threshold):
+        generation = 0
+        stagnation_counter = 0  
+        best_fitness = 0
+        fitnesses = []
+        self.generate_population()
+        all_population = []
+        best = 0
+        while(stagnation_counter < stagnation_threshold):
+            print("Generation ", generation, self.population)
+            self.fitness()
+            print("Generation ", generation, self.purposes)
+
+            
+            current_best = max(self.purposes)
+            if(current_best > best_fitness):
+                best_fitness = current_best
+                best = generation
+                stagnation_counter = 0
+            else:
+                stagnation_counter += 1
+            next_population = []
+            l = 0
+            while(l < self.ndiv):
+                childs = self.crossover()
+                childs = self.mutation(childs)
+                for c in childs:
+                    next_population.append(c)
+                    l+=1
+            all_population.append(self.population)
+            self.population = next_population
+            fitnesses.append(self.purposes)
+            self.purposes = []
+            print("Generation ", generation, " is done with fitness", max(fitnesses[generation]))
+            generation+=1
+            
+        print("The best population is ", all_population[best], " with the fitness ", max(fitnesses[best]), " at generation ", best)
+        best_population = all_population[best]
+        fit = fitnesses[best]
+        index = fit.index(max(fit))
+        print("the best solution is", best_population[index])
+        
+        
+        
+    # def GA_Algorithm(self,max_generations,stagnation_threshold):
+    #     self.generate_population()
+    #     print("The first population is ", self.population)
+    #     c = self.crossover()
+    #     print("crossover is : ", c)
+        
     #Cette fonction pour l'instant permet d'afficher les differents resultats des fonctions precedente
     #Vous pouvez refaire l'execution plusieurs fois
     def printing(self):
