@@ -15,13 +15,19 @@ class Sac_a_dos:
     #this function allow us to create our first set of solutions (population)
     def generate_population(self):
         total_obj = len(self.Objets)
-        for i in range(0,self.ndiv):
+        i=0
+        while(i < self.ndiv):
+            total_width = 0
             l = []
             for j in range(0,total_obj):
                 rand = random.randint(0,1)
                 l.append(rand)
-            self.population.append(l)        
-
+                if(rand == 1):
+                    total_width = total_width+self.Objets[j,0]
+                
+            if(total_width<=self.width):
+                self.population.append(l)
+                i+=1    
 
     #Now we must define our function of fitness
     #If it's 0 then it's not considered as a solution (false)
@@ -37,10 +43,7 @@ class Sac_a_dos:
                     total_width = total_width+self.Objets[i,0] #first column represente the width
                     total_value = total_value+self.Objets[i,1] #second column represente the value
                     
-            if(total_width>self.width): #si la solution proposer depasse ne respecte pas la contrainte du poids alors ca valeur de fitness vas recevoir 0
-                self.purposes.append(0)
-            else:
-                self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
+            self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
     
     
     #Cette fonction permet de selectionner un individu avec une proba generer par random

@@ -1,7 +1,7 @@
 from code_1 import Sac_a_dos
 import pandas as pd
 
-dataset = pd.read_csv('C:\\Users\\sofia\\OneDrive\\Bureau\\ProjetMetaH\\codes\\sac_a_dos_dataset.csv')
+dataset = pd.read_csv('C:\\Users\\Sofiane\\Desktop\\Metah project\\codes\\sac_a_dos_dataset.csv')
 # print(dataset)
 X = dataset.iloc[:,1:].values
 
