@@ -9,8 +9,8 @@ class Sac_a_dos:
         self.population = [] #The first population (solutions)
         self.width = width #Maximum width
         self.purposes = [] #An array to save the fitness values of each individu
-        self.crossoverRate = 1 #The rate of crossover
-        self.mutationRate = 0.3 #The rate of mutation
+        self.crossoverRate = 0.9 #The rate of crossover
+        self.mutationRate = 0.1 #The rate of mutation
         
     #Lets define a function who can generate a population of ndiv individus
     #this function allow us to create our first set of solutions (population)
@@ -75,22 +75,18 @@ class Sac_a_dos:
 
     def crossover(self):
         r = random.uniform(0, 1)
-        childs = []
+        parents = self.selectParents()
+        parent1 = parents['firstParent']
+        parent2 = parents['secondParent']
+        childs = [parent1,parent2]
         if r < self.crossoverRate:
-            parents = self.selectParents()
-            parent1 = parents['firstParent']
-            parent2 = parents['secondParent']
-                
             # Assure un point de croisement raisonnable, éviter la fin ou le début
             crossover_point = random.randint(1, len(parent1) - 2)  
     
             # Créer les enfants via crossover
             child1 = parent1[:crossover_point] + parent2[crossover_point:]
             child2 = parent2[:crossover_point] + parent1[crossover_point:]
-    
-            
-            childs.append(child1)
-            childs.append(child2)
+            childs = [child1,child2]
         
         return childs
         
