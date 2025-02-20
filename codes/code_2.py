@@ -1,6 +1,5 @@
 import random
-
-class Sac_a_dos:
+class Sac_a_dos_2:
 
     # constructor of the class 
     #assigne the dataset to the Objets and the maximum number of individus in a population
@@ -10,26 +9,27 @@ class Sac_a_dos:
         self.population = [] #The first population (solutions)
         self.width = width #Maximum width
         self.purposes = [] #An array to save the fitness values of each individu
-        self.crossoverRate = 0.9 #The rate of crossover
+        self.crossoverRate = 0.8 #The rate of crossover
         self.mutationRate = 0.1 #The rate of mutation
         
     #Lets define a function who can generate a population of ndiv individus
     #this function allow us to create our first set of solutions (population)
+    #Now we gonna use the gluton algorithm to generate the first population
+    
     def generate_population(self):
-        total_obj = len(self.Objets)
-        i=0
-        while(i < self.ndiv):
+        sorted_indices = sorted(range(len(self.Objets)), key=lambda i: self.Objets[i][0] / self.Objets[i][1], reverse=True)
+        for _ in range(self.ndiv):
+            random.shuffle(sorted_indices)
+            
+            solution = [0] * len(self.Objets)
             total_width = 0
-            l = []
-            for j in range(0,total_obj):
-                rand = random.randint(0,1)
-                l.append(rand)
-                if(rand == 1):
-                    total_width = total_width+self.Objets[j,0]
-                
-            if(total_width<=self.width):
-                self.population.append(l)
-                i+=1    
+            
+            for i in sorted_indices:
+                value, weight = self.Objets[i]
+                if(total_width + weight <= self.width):
+                    solution[i] = 1
+                    total_width += weight
+            self.population.append(solution)
 
     #Now we must define our function of fitness
     #If it's 0 then it's not considered as a solution (false)
@@ -64,15 +64,6 @@ class Sac_a_dos:
         return self.population[i - 1]
         
         
-        # r entre 0 et 72
-        # r = 0
-        # somme = 
-        #[1,1,0,1] = 20 
-        #[0,1,0,1] = 40 
-        #[0,1,1,1] = 10
-        #[1,0,1,0] = 2
-        
-        #72
     #cette fonction permet de selectionner deux parents qui soit toujours different pour garantir une bonne convergence
     def selectParents(self):
         parent1 = self.select()
@@ -91,11 +82,12 @@ class Sac_a_dos:
         childs = [parent1,parent2]
         if r < self.crossoverRate:
             # Assure un point de croisement raisonnable, éviter la fin ou le début
-            crossover_point = random.randint(1, len(parent1) - 2)  
-    
+            crossover_point1 = random.randint(1, len(parent1) - 2)
+            crossover_point2 = random.randint(crossover_point1 + 1, len(parent1) - 1)
+                
             # Créer les enfants via crossover
-            child1 = parent1[:crossover_point] + parent2[crossover_point:]
-            child2 = parent2[:crossover_point] + parent1[crossover_point:]
+            child1 = parent1[:crossover_point1] + parent2[crossover_point1:crossover_point2] + parent1[crossover_point2:]
+            child2 = parent2[:crossover_point1] + parent1[crossover_point1:crossover_point2] + parent2[crossover_point2:]
             childs = [child1,child2]
         
         return childs
@@ -119,12 +111,8 @@ class Sac_a_dos:
         self.generate_population()
         all_population = []
         best = 0
-        while(stagnation_counter < stagnation_threshold):
-            print("Generation ", generation, self.population)
+        while(generation < max_generations):
             self.fitness()
-            print("Generation ", generation, self.purposes)
-
-            
             current_best = max(self.purposes)
             if(current_best > best_fitness):
                 best_fitness = current_best
@@ -132,7 +120,6 @@ class Sac_a_dos:
                 stagnation_counter = 0
             else:
                 stagnation_counter += 1
-                
             next_population = []
             l = 0
             while(l < self.ndiv):
@@ -141,42 +128,36 @@ class Sac_a_dos:
                 for c in childs:
                     next_population.append(c)
                     l+=1
-                    
             all_population.append(self.population)
-            
             self.population = next_population
             fitnesses.append(self.purposes)
             self.purposes = []
-            print("Generation ", generation, " is done with fitness", max(fitnesses[generation]))
             generation+=1
-            
-        print("The best population is ", all_population[best], " with the fitness ", max(fitnesses[best]), " at generation ", best)
         best_population = all_population[best]
         fit = fitnesses[best]
-        index = fit.index(max(fit))
-        print("the best solution is", best_population[index])
+        if(max(fitnesses[best])!=0):
+            print("fitness : ", max(fitnesses[best]), " at generation ", best)
+            index = fit.index(max(fit))
+            print("the best solution is", best_population[index])
+            with open("results.txt", "a") as fichier:
+                fichier.write(str(max(fitnesses[best]))+"\n")
+        else:
+            print("No solution found")
         
-        
-        
-    # def GA_Algorithm(self,max_generations,stagnation_threshold):
-    #     self.generate_population()
-    #     print("The first population is ", self.population)
-    #     c = self.crossover()
-    #     print("crossover is : ", c)
         
     #Cette fonction pour l'instant permet d'afficher les differents resultats des fonctions precedente
     #Vous pouvez refaire l'execution plusieurs fois
-    # def printing(self):
-    #     print("the data set")
-    #     print(self.Objets)
-    #     print("The number of individus")
-    #     print(self.ndiv)    
-    #     print("the maximum width is :",self.width)
-    #     print("The first population is :")
-    #     for p in self.population:
-    #         print(p)
-    #     print("the fitness is :")
-    #     for p in self.purposes:
-    #         print(p)
-    #     k = self.selectParents()
-    #     print("the parents are ", k)
+    def printing(self):
+        print("the data set")
+        print(self.Objets)
+        print("The number of individus")
+        print(self.ndiv)    
+        print("the maximum width is :",self.width)
+        print("The first population is :")
+        for p in self.population:
+            print(p)
+        print("the fitness is :")
+        for p in self.purposes:
+            print(p)
+        k = self.selectParents()
+        print("the parents are ", k)
