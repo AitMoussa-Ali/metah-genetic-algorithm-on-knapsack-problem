@@ -1,0 +1,117 @@
+low_scale_results in 10 execution:
+goal : 295
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 288.0/ number individus = 15
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 279.0/ number individus = 15
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 274.0/ number individus = 15
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 295.0/ number individus = 15*
+________________________________________________________________________________________________________
+goal : 1024
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 963.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 834.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 950.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 786.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 878.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 1016.0/ number individus = 22*
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 978.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 955.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 946.0/ number individus = 22
+width : 20 / crossover = 0.8 / mutation = 0.01 / generations = 45 / value = 894.0/ number individus = 22
+________________________________________________________________________________________________________
+goal : 35
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 35.0/ number individus = 4*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 28.0/ number individus = 4
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 35.0/ number individus = 4*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 28.0/ number individus = 4
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 35.0/ number individus = 4
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 26.0/ number individus = 4
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 35.0/ number individus = 4*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 33.0/ number individus = 4
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 35.0/ number individus = 4*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 24.0/ number individus = 4
+________________________________________________________________________________________________________
+goal : 23
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 19.0/ number individus = 4
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 19.0/ number individus = 5
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 18.0/ number individus = 5
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 22.0/ number individus = 5
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 23.0/ number individus = 5*
+width : 4 / crossover = 0.8 / mutation = 0.01 / generations = 5 / value = 19.0/ number individus = 5
+________________________________________________________________________________________________________
+goal : 481,0694
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 481.069368/ number individus = 16*
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 421.784111/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 414.618365/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 422.693563/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 382.216864/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 415.994751/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 415.994751/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 448.200933/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 408.816797/ number individus = 16
+width : 15 / crossover = 0.8 / mutation = 0.011 / generations = 30 / value = 355.363627/ number individus = 16
+________________________________________________________________________________________________________
+goal : 52
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 48.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 46.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 44.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 42.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 49.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 44.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 50.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 47.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 39.0/ number individus = 5
+width : 10 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 52.0/ number individus = 5*
+________________________________________________________________________________________________________
+goal : 107
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 107.0/ number individus = 7*
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 92.0/ number individus = 7
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 92.0/ number individus = 7
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 107.0/ number individus = 7*
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 102.0/ number individus = 7
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 102.0/ number individus = 7
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 100.0/ number individus = 7
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 107.0/ number individus = 7*
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 87.0/ number individus = 7
+width : 7 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 93.0/ number individus = 7
+________________________________________________________________________________________________________
+goal : 9767
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9709.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9687.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9698.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9727.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9719.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9729.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9725.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9620.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9711.0/ number individus = 10
+width : 23 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 9719.0/ number individus = 10
+________________________________________________________________________________________________________
+goal : 103
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 130.0/ number individus = 4*
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 109.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 106.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 130.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 94.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 118.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 118.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 118.0/ number individus = 4
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 130.0/ number individus = 4*
+width : 5 / crossover = 0.8 / mutation = 0.011 / generations = 10 / value = 97.0/ number individus = 4
+________________________________________________________________________________________________________
+goal : 1025
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 1025.0/ number individus = 20*
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 936.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 933.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 917.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 911.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 933.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 883.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 889.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 903.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 878.0/ number individus = 20
+width : 20 / crossover = 0.78 / mutation = 0.01 / generations = 55 / value = 887.0/ number individus = 20

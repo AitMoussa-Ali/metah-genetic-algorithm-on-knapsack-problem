@@ -1,17 +1,17 @@
 import random
 
-class Sac_a_dos:
+class KnapsackProblem1:
 
     # constructor of the class 
     #assigne the dataset to the Objets and the maximum number of individus in a population
-    def __init__(self, Objets, ndiv, width) -> None:
+    def __init__(self, Objets, ndiv, width, crossoverRate, mutationRate) -> None:
         self.Objets = Objets #values assigned for each object, look at the dataset
         self.ndiv = ndiv #number of individus
         self.population = [] #The first population (solutions)
         self.width = width #Maximum width
         self.purposes = [] #An array to save the fitness values of each individu
-        self.crossoverRate = 0.9 #The rate of crossover
-        self.mutationRate = 0.1 #The rate of mutation
+        self.crossoverRate = crossoverRate #The rate of crossover
+        self.mutationRate = mutationRate #The rate of mutation
         
     #Lets define a function who can generate a population of ndiv individus
     #this function allow us to create our first set of solutions (population)
@@ -25,7 +25,7 @@ class Sac_a_dos:
                 rand = random.randint(0,1)
                 l.append(rand)
                 if(rand == 1):
-                    total_width = total_width+self.Objets[j,0]
+                    total_width = total_width+self.Objets[j,1]
                 
             if(total_width<=self.width):
                 self.population.append(l)
@@ -42,8 +42,8 @@ class Sac_a_dos:
             total_value = 0
             for i in range(0,len(p)):
                 if(p[i] != 0):
-                    total_width = total_width+self.Objets[i,0] #first column represente the width
-                    total_value = total_value+self.Objets[i,1] #second column represente the value
+                    total_width = total_width+self.Objets[i,1] #second column represente the width
+                    total_value = total_value+self.Objets[i,0] #first column represente the value
             if(total_width <= self.width):
                 self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
             else:
@@ -55,7 +55,7 @@ class Sac_a_dos:
     def select(self):
         if sum(self.purposes) == 0:  # vérifier si la somme des fitness est nulle
             return random.choice(self.population)  # Sélectionne un individu aléatoire
-        r = random.randint(0, sum(self.purposes))
+        r = random.randint(0, int(sum(self.purposes)))
         s = 0
         i = 0
         while s < r and i < len(self.purposes):
@@ -63,16 +63,6 @@ class Sac_a_dos:
             i += 1
         return self.population[i - 1]
         
-        
-        # r entre 0 et 72
-        # r = 0
-        # somme = 
-        #[1,1,0,1] = 20 
-        #[0,1,0,1] = 40 
-        #[0,1,1,1] = 10
-        #[1,0,1,0] = 2
-        
-        #72
     #cette fonction permet de selectionner deux parents qui soit toujours different pour garantir une bonne convergence
     def selectParents(self):
         parent1 = self.select()
@@ -91,7 +81,7 @@ class Sac_a_dos:
         childs = [parent1,parent2]
         if r < self.crossoverRate:
             # Assure un point de croisement raisonnable, éviter la fin ou le début
-            crossover_point = random.randint(1, len(parent1) - 2)  
+            crossover_point = random.randint(1, len(parent1) - 1)  
     
             # Créer les enfants via crossover
             child1 = parent1[:crossover_point] + parent2[crossover_point:]
@@ -119,12 +109,8 @@ class Sac_a_dos:
         self.generate_population()
         all_population = []
         best = 0
-        while(stagnation_counter < stagnation_threshold):
-            print("Generation ", generation, self.population)
+        while(generation < max_generations):
             self.fitness()
-            print("Generation ", generation, self.purposes)
-
-            
             current_best = max(self.purposes)
             if(current_best > best_fitness):
                 best_fitness = current_best
@@ -147,36 +133,16 @@ class Sac_a_dos:
             self.population = next_population
             fitnesses.append(self.purposes)
             self.purposes = []
-            print("Generation ", generation, " is done with fitness", max(fitnesses[generation]))
             generation+=1
             
-        print("The best population is ", all_population[best], " with the fitness ", max(fitnesses[best]), " at generation ", best)
         best_population = all_population[best]
         fit = fitnesses[best]
-        index = fit.index(max(fit))
-        print("the best solution is", best_population[index])
-        
-        
-        
-    # def GA_Algorithm(self,max_generations,stagnation_threshold):
-    #     self.generate_population()
-    #     print("The first population is ", self.population)
-    #     c = self.crossover()
-    #     print("crossover is : ", c)
-        
-    #Cette fonction pour l'instant permet d'afficher les differents resultats des fonctions precedente
-    #Vous pouvez refaire l'execution plusieurs fois
-    # def printing(self):
-    #     print("the data set")
-    #     print(self.Objets)
-    #     print("The number of individus")
-    #     print(self.ndiv)    
-    #     print("the maximum width is :",self.width)
-    #     print("The first population is :")
-    #     for p in self.population:
-    #         print(p)
-    #     print("the fitness is :")
-    #     for p in self.purposes:
-    #         print(p)
-    #     k = self.selectParents()
-    #     print("the parents are ", k)
+        if(max(fitnesses[best])!=0):
+            index = fit.index(max(fit))
+            print("✅ the best solution is ", best_population[index], "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
+            with open("results_low_scale.txt", "a") as fichier:
+                msg = "width : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+                fichier.write(msg)
+        else:
+            print("No solution found")
+    
