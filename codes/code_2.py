@@ -1,16 +1,16 @@
 import random
-class KnapsackProblem2:
+class Sac_a_dos_2:
 
     # constructor of the class 
     #assigne the dataset to the Objets and the maximum number of individus in a population
-    def __init__(self, Objets, ndiv, width, crossoverRate, mutationRate) -> None:
+    def __init__(self, Objets, ndiv, width) -> None:
         self.Objets = Objets #values assigned for each object, look at the dataset
         self.ndiv = ndiv #number of individus
         self.population = [] #The first population (solutions)
         self.width = width #Maximum width
         self.purposes = [] #An array to save the fitness values of each individu
-        self.crossoverRate = crossoverRate  #The rate of crossover
-        self.mutationRate = mutationRate #The rate of mutation
+        self.crossoverRate = 0.8 #The rate of crossover
+        self.mutationRate = 0.1 #The rate of mutation
         
     #Lets define a function who can generate a population of ndiv individus
     #this function allow us to create our first set of solutions (population)
@@ -42,8 +42,8 @@ class KnapsackProblem2:
             total_value = 0
             for i in range(0,len(p)):
                 if(p[i] != 0):
-                    total_width = total_width+self.Objets[i,1] #first column represente the width
-                    total_value = total_value+self.Objets[i,0] #second column represente the value
+                    total_width = total_width+self.Objets[i,0] #first column represente the width
+                    total_value = total_value+self.Objets[i,1] #second column represente the value
             if(total_width <= self.width):
                 self.purposes.append(total_value) #dans le cas ou elle respecte la contrainte on rajouter le poids totale a l'index
             else:
@@ -55,7 +55,7 @@ class KnapsackProblem2:
     def select(self):
         if sum(self.purposes) == 0:  # vérifier si la somme des fitness est nulle
             return random.choice(self.population)  # Sélectionne un individu aléatoire
-        r = random.randint(0, int(sum(self.purposes)))
+        r = random.randint(0, sum(self.purposes))
         s = 0
         i = 0
         while s < r and i < len(self.purposes):
@@ -136,10 +136,28 @@ class KnapsackProblem2:
         best_population = all_population[best]
         fit = fitnesses[best]
         if(max(fitnesses[best])!=0):
+            print("fitness : ", max(fitnesses[best]), " at generation ", best)
             index = fit.index(max(fit))
-            print("✅ the best solution is ", best_population[index], "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
-            with open("results_large_scale.txt", "a") as fichier:
-                msg = "width : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
-                fichier.write(msg)
+            #print("the best solution is", best_population[index])
+            with open("results.txt", "a") as fichier:
+                fichier.write(str(max(fitnesses[best]))+"\n")
         else:
             print("No solution found")
+        
+        
+    #Cette fonction pour l'instant permet d'afficher les differents resultats des fonctions precedente
+    #Vous pouvez refaire l'execution plusieurs fois
+    def printing(self):
+        print("the data set")
+        print(self.Objets)
+        print("The number of individus")
+        print(self.ndiv)    
+        print("the maximum width is :",self.width)
+        print("The first population is :")
+        for p in self.population:
+            print(p)
+        print("the fitness is :")
+        for p in self.purposes:
+            print(p)
+        k = self.selectParents()
+        print("the parents are ", k)
