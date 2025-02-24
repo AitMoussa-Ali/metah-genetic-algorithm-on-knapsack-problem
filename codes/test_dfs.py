@@ -16,5 +16,5 @@ df = np.array(data, dtype=float)
 #for the data with a large scale we remove the last line because it's represent the optimal solution
 df = df[1:, :]  # deleting the first line
 
-sol = DFS(995,df)
-sol.find_solution()
+sol = DFS(995,df,10)
+sol.solve_with_dfs()

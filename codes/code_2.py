@@ -138,7 +138,7 @@ class KnapsackProblem2:
         if(scale == "La"):
             if(max(fitnesses[best])!=0):
                 index = fit.index(max(fit))
-                print("✅ the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
+                print(" the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
                 with open("results_large_scale_sol2.txt", "a") as fichier:
                     msg = "weight : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
                     fichier.write(msg)
@@ -149,7 +149,7 @@ class KnapsackProblem2:
         else:
             if(max(fitnesses[best])!=0):
                 index = fit.index(max(fit))
-                print("✅ the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
+                print(" the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
                 with open("results_low_scale_sol2.txt", "a") as fichier:
                     msg = "weight : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
                     fichier.write(msg)

@@ -1,10 +1,10 @@
 import random
-
+import time
 class KnapsackProblem1:
 
     # constructor of the class 
     #assigne the dataset to the Objets and the maximum number of individus in a population
-    def __init__(self, Objets, ndiv, weight, crossoverRate, mutationRate) -> None:
+    def __init__(self, Objets, ndiv, weight, crossoverRate, mutationRate, time_limit) -> None:
         self.Objets = Objets #values assigned for each object, look at the dataset
         self.ndiv = ndiv #number of individus
         self.population = [] #The first population (solutions)
@@ -12,7 +12,7 @@ class KnapsackProblem1:
         self.purposes = [] #An array to save the fitness values of each individu
         self.crossoverRate = crossoverRate #The rate of crossover
         self.mutationRate = mutationRate #The rate of mutation
-        
+        self.time_limit = time_limit #limiting the execution time
     #Lets define a function who can generate a population of ndiv individus
     #this function allow us to create our first set of solutions (population)   
     def generate_population(self):
@@ -115,7 +115,10 @@ class KnapsackProblem1:
         self.generate_population()
         all_population = []
         best = 0
+        start_time = time.time()
         while(generation < max_generations):
+            if(time.time() - start_time > self.time_limit):
+                break
             self.fitness()
             current_best = max(self.purposes)
             if(current_best > best_fitness):
@@ -139,26 +142,29 @@ class KnapsackProblem1:
             
         best_population = all_population[best]
         fit = fitnesses[best]
-        if(scale == "La"):
-            if(max(fitnesses[best])!=0):
+        if(max(fitnesses[best])!=0):
+            print("the best solution is ", "at generation ", best, " with value = ",max(fitnesses[best]))
+            if(scale == "La"):
                 index = fit.index(max(fit))
-                print("✅ the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
                 with open("results_large_scale_sol1.txt", "a") as fichier:
                     msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
                     fichier.write(msg)
                     solution = "solution is : " + str(best_population[index]) +"\n"
                     fichier.write(solution)
-            else:
-                print("No solution found")
-        else:
-            if(max(fitnesses[best])!=0):
+                return
+            if(scale == "Lo"):
                 index = fit.index(max(fit))
-                print("✅ the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
                 with open("results_low_scale_sol1.txt", "a") as fichier:
                     msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
                     fichier.write(msg)
                     solution = "solution is : " + str(best_population[index]) +"\n"
-                    fichier.write(solution) 
-            else:
-                print("No solution found")
-    
+                    fichier.write(solution)
+                return
+            if(scale == "Exe"):
+                with open("Execution_time.txt", "a") as fichier:
+                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) + " execution time : " +str(time.time() - start_time)+ "\n"
+                    fichier.write(msg)
+        else:
+            print("No solution found")
+                
+            

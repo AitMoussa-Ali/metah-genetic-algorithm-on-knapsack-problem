@@ -1,0 +1,12 @@
+995: 100 objets
+variation of generations :
+100 - 0.3483 s
+300 - 1.0778 s
+500 - 1.8670 s
+1000 - 3.8379 s
+2000 - 
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 8290.0/ number individus = 100 execution time : 7.6015965938568115
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 8318.0/ number individus = 100 execution time : 7.41546368598938
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 9147.0/ number individus = 100 execution time : 7.666401386260986
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 7784.0/ number individus = 100 execution time : 7.5627758502960205
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 8929.0/ number individus = 100 execution time : 7.522418260574341

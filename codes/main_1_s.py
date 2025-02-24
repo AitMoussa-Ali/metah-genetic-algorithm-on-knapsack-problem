@@ -16,6 +16,6 @@ df = np.array(data, dtype=float)
 #for the data with a large scale we remove the last line because it's represent the optimal solution
 df = df[1:, :]  # deleting the first line
 
-sac = KnapsackProblem1(df, 100, 995, 0.8, 0.01 )
+sac = KnapsackProblem1(df, 100, 995, 0.8, 0.01, 10)
 # sac.generate_genome()
-sac.GA_Algorithm(500,"La") #La for large scale and Lo for low scale
+sac.GA_Algorithm(2000,"Exe") #La for large scale and Lo for low scale Exe
