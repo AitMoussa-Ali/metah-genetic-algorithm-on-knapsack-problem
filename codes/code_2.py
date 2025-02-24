@@ -79,33 +79,35 @@ class KnapsackProblem2:
         parents = self.selectParents()
         parent1 = parents['firstParent']
         parent2 = parents['secondParent']
-        childs = [parent1,parent2]
+        childs = [parent1, parent2]
+
         if r < self.crossoverRate:
-            # Assure un point de croisement raisonnable, éviter la fin ou le début
-            crossover_point1 = random.randint(1, len(parent1) - 2)
-            crossover_point2 = random.randint(crossover_point1 + 1, len(parent1) - 1)
-                
-            # Créer les enfants via crossover
-            child1 = parent1[:crossover_point1] + parent2[crossover_point1:crossover_point2] + parent1[crossover_point2:]
-            child2 = parent2[:crossover_point1] + parent1[crossover_point1:crossover_point2] + parent2[crossover_point2:]
+            child1 = []
+            child2 = []
+            for i in range(len(parent1)):
+                if random.uniform(0, 1) < 0.5:
+                    child1.append(parent1[i])
+                    child2.append(parent2[i])
+                else:
+                    child1.append(parent2[i])
+                    child2.append(parent1[i])
+
             childs = [child1,child2]
-        
+
         return childs
         
-    def mutation(self,childs):
-        r = random.uniform(0,1)
-        if(r < self.mutationRate):
-            child1 = childs[0]
-            child2 = childs[1]
-            mutation_point = random.randint(0, len(child1) - 1)
-            child1[mutation_point] = 1 - child1[mutation_point]
-            child2[mutation_point] = 1 - child2[mutation_point]
-        
-        return childs   
+    def mutation(self, childs):
+        r = random.uniform(0, 1)
+        if r < self.mutationRate:
+            for child in childs:
+                num_mutations = max(1, int(0.3 * len(child)))  # Muter 30% des gènes
+                mutation_points = random.sample(range(len(child)), num_mutations)
+                for point in mutation_points:
+                    child[point] = 1 - child[point]  # Flip le bit
+        return childs 
     
-    def GA_Algorithm(self,max_generations,stagnation_threshold):
+    def GA_Algorithm(self,max_generations,scale):
         generation = 0
-        stagnation_counter = 0  
         best_fitness = 0
         fitnesses = []
         self.generate_population()
@@ -117,9 +119,7 @@ class KnapsackProblem2:
             if(current_best > best_fitness):
                 best_fitness = current_best
                 best = generation
-                stagnation_counter = 0
-            else:
-                stagnation_counter += 1
+                
             next_population = []
             l = 0
             while(l < self.ndiv):
@@ -135,11 +135,25 @@ class KnapsackProblem2:
             generation+=1
         best_population = all_population[best]
         fit = fitnesses[best]
-        if(max(fitnesses[best])!=0):
-            index = fit.index(max(fit))
-            print("✅ the best solution is ", best_population[index], "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
-            with open("results_large_scale.txt", "a") as fichier:
-                msg = "width : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
-                fichier.write(msg)
+        if(scale == "La"):
+            if(max(fitnesses[best])!=0):
+                index = fit.index(max(fit))
+                print("✅ the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
+                with open("results_large_scale_sol2.txt", "a") as fichier:
+                    msg = "weight : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+                    fichier.write(msg)
+                    solution = "solution is : " + str(best_population[index]) +"\n"
+                    fichier.write(solution)
+            else:
+                print("No solution found")
         else:
-            print("No solution found")
+            if(max(fitnesses[best])!=0):
+                index = fit.index(max(fit))
+                print("✅ the best solution is ", "at generation ", best, " with value 🎯 = ",max(fitnesses[best]))
+                with open("results_low_scale_sol2.txt", "a") as fichier:
+                    msg = "weight : " + str(len(self.Objets)) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+                    fichier.write(msg)
+                    solution = "solution is : " + str(best_population[index]) +"\n"
+                    fichier.write(solution) 
+            else:
+                print("No solution found")

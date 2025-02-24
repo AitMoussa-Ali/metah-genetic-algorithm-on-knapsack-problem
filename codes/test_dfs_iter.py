@@ -1,6 +1,7 @@
 from DFS import DFS
 import pandas as pd
 import numpy as np
+from code_3 import Sac_a_dos_dfs
 
 #here u can the change the path to the path of the dataset
 path = "C:\\Users\\sofia\\OneDrive\\Bureau\\Projet metah\\instances_01_KP\\large_scale\\knapPI_1_100_1000_1"
@@ -16,5 +17,8 @@ df = np.array(data, dtype=float)
 #for the data with a large scale we remove the last line because it's represent the optimal solution
 df = df[1:, :]  # deleting the first line
 
-sol = DFS(995,df)
-sol.find_solution()
+# sol = DFS(20,df)
+# sol.find_solution()
+
+sac_dfs = Sac_a_dos_dfs(df, 995)
+sac_dfs.affich()

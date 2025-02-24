@@ -18,4 +18,4 @@ df = df[1:, :]  # deleting the first line
 
 #Run the algorithm
 kpsack = KnapsackProblem2(df, 15, 375)
-kpsack.GA_Algorithm(15, 20)
+kpsack.GA_Algorithm(15)
