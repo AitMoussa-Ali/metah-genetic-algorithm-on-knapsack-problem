@@ -1,5 +1,5 @@
 import random
-
+import time
 class Sac_a_dos_dfs:
     def __init__(self, objets, weight):
         self.objets = objets  # (valeur, poids)
@@ -45,14 +45,11 @@ class Sac_a_dos_dfs:
             return True
         
     def affich(self):
+        start_time = time.time()
         solution, valeur = self.sad()
+        print("temps exe :", time.time() - start_time)
         print("Solution trouvée avec DFS :")
         print(solution)
         print("Valeur totale :", valeur)
         poids_total = sum(self.objets[i][1] for i in range(len(solution)) if solution[i] == 1)
         print("Poids total :", poids_total)
-
-        if self.evaluate(solution):
-            print("Solution valide.")
-        else:
-            print("Solution invalide.")

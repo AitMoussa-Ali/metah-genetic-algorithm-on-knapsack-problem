@@ -10,3 +10,185 @@ weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 
 weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 9147.0/ number individus = 100 execution time : 7.666401386260986
 weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 7784.0/ number individus = 100 execution time : 7.5627758502960205
 weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 2000 / value = 8929.0/ number individus = 100 execution time : 7.522418260574341
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 200 / value = 295.0/ number individus = 100 execution time : 0.44532132148742676
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 200 / value = 295.0/ number individus = 100 execution time : 0.46579504013061523
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 295.0/ number individus = 50 execution time : 0.0078125
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 295.0/ number individus = 50 execution time : 0.007798194885253906
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 295.0/ number individus = 40 execution time : 0.005748271942138672
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 294.0/ number individus = 20 execution time : 0.002576112747192383
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 290.0/ number individus = 20 execution time : 0.002606630325317383
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 294.0/ number individus = 25 execution time : 0.003536224365234375
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 295.0/ number individus = 25 execution time : 0.0034720897674560547
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 294.0/ number individus = 25 execution time : 0.003496885299682617
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 15 / value = 295.0/ number individus = 25 execution time : 0.004787921905517578
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 15 / value = 294.0/ number individus = 25 execution time : 0.004767417907714844
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 15 / value = 294.0/ number individus = 25 execution time : 0.0048885345458984375
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 15 / value = 295.0/ number individus = 25 execution time : 0.0047800540924072266
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 15 / value = 294.0/ number individus = 25 execution time : 0.00487518310546875
+weight : 269 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 295.0/ number individus = 30 execution time : 0.003991842269897461
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 10 / value = 995.0/ number individus = 30 execution time : 0.005113363265991211
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 1024.0/ number individus = 30 execution time : 0.00900125503540039
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 997.0/ number individus = 30 execution time : 0.009392738342285156
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 1018.0/ number individus = 30 execution time : 0.0092926025390625
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 1018.0/ number individus = 30 execution time : 0.0088958740234375
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 1018.0/ number individus = 35 execution time : 0.011479854583740234
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 995.0/ number individus = 40 execution time : 0.013244152069091797
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 20 / value = 1018.0/ number individus = 40 execution time : 0.013324499130249023
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 40 / value = 1024.0/ number individus = 40 execution time : 0.03073740005493164
+weight : 878 / crossover = 0.8 / mutation = 0.01 / generations = 40 / value = 1024.0/ number individus = 40 execution time : 0.025877952575683594
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 100 / value = 9147.0/ number individus = 180 execution time : 0.8426306247711182
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 100 / value = 7754.0/ number individus = 100 execution time : 0.3354916572570801
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 300 / value = 8990.0/ number individus = 100 execution time : 1.0268514156341553
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8106.0/ number individus = 100 execution time : 1.7206523418426514
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8173.0/ number individus = 100 execution time : 1.7485787868499756
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8226.0/ number individus = 100 execution time : 1.7431704998016357
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8657.0/ number individus = 100 execution time : 1.7784664630889893
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8418.0/ number individus = 100 execution time : 1.8300812244415283
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 9147.0/ number individus = 100 execution time : 1.8347105979919434
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8687.0/ number individus = 100 execution time : 1.7800817489624023
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 7243.0/ number individus = 100 execution time : 1.798670768737793
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 300 / value = 8212.0/ number individus = 100 execution time : 1.047199010848999
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 300 / value = 8808.0/ number individus = 100 execution time : 1.0149853229522705
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 300 / value = 8940.0/ number individus = 100 execution time : 1.0611119270324707
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 300 / value = 7820.0/ number individus = 100 execution time : 1.0300800800323486
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 300 / value = 8129.0/ number individus = 100 execution time : 1.01777982711792
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8817.0/ number individus = 100 execution time : 1.7531042098999023
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8810.0/ number individus = 100 execution time : 1.8575196266174316
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8259.0/ number individus = 100 execution time : 1.8510150909423828
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8445.0/ number individus = 100 execution time : 1.775282382965088
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 500 / value = 8323.0/ number individus = 100 execution time : 1.7546215057373047
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 700 / value = 8322.0/ number individus = 100 execution time : 2.4640543460845947
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 700 / value = 8268.0/ number individus = 100 execution time : 2.4606080055236816
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 700 / value = 8940.0/ number individus = 100 execution time : 2.6708929538726807
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 700 / value = 8911.0/ number individus = 100 execution time : 2.4330780506134033
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 700 / value = 8660.0/ number individus = 100 execution time : 2.4334795475006104
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 900 / value = 8911.0/ number individus = 100 execution time : 3.246426820755005
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 900 / value = 8416.0/ number individus = 100 execution time : 3.400601387023926
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 900 / value = 8929.0/ number individus = 100 execution time : 3.2718822956085205
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 900 / value = 8817.0/ number individus = 100 execution time : 3.173494577407837
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 900 / value = 8451.0/ number individus = 100 execution time : 3.0689918994903564
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 9147.0/ number individus = 100 execution time : 3.989741086959839
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8653.0/ number individus = 100 execution time : 3.8777639865875244
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 7823.0/ number individus = 100 execution time : 3.8570711612701416
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8451.0/ number individus = 100 execution time : 3.8965444564819336
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8631.0/ number individus = 100 execution time : 3.903104782104492
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8422.0/ number individus = 100 execution time : 3.992562770843506
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8507.0/ number individus = 100 execution time : 3.8607208728790283
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8911.0/ number individus = 100 execution time : 3.7882583141326904
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8530.0/ number individus = 100 execution time : 3.8272151947021484
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8049.0/ number individus = 100 execution time : 3.828017234802246
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 9147.0/ number individus = 100 execution time : 4.11170220375061
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8751.0/ number individus = 100 execution time : 3.9018139839172363
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8549.0/ number individus = 100 execution time : 3.909043312072754
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8554.0/ number individus = 100 execution time : 3.8478689193725586
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 7585.0/ number individus = 100 execution time : 3.9389922618865967
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8544.0/ number individus = 100 execution time : 4.185676097869873
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 9147.0/ number individus = 100 execution time : 4.146535634994507
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8544.0/ number individus = 100 execution time : 3.8242080211639404
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8234.0/ number individus = 100 execution time : 3.878972053527832
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8638.0/ number individus = 100 execution time : 3.948202610015869
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8557.0/ number individus = 100 execution time : 4.034188270568848
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1100 / value = 8179.0/ number individus = 100 execution time : 3.926738739013672
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8559.0/ number individus = 100 execution time : 3.7152559757232666
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8207.0/ number individus = 100 execution time : 3.519516706466675
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8185.0/ number individus = 100 execution time : 3.485149383544922
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8799.0/ number individus = 100 execution time : 3.537099838256836
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8719.0/ number individus = 100 execution time : 3.4640095233917236
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8686.0/ number individus = 100 execution time : 3.588270902633667
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8929.0/ number individus = 100 execution time : 3.43318772315979
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8660.0/ number individus = 100 execution time : 3.536111831665039
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8342.0/ number individus = 100 execution time : 3.545111894607544
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8897.0/ number individus = 100 execution time : 3.6159520149230957
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8447.0/ number individus = 100 execution time : 3.4535980224609375
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8808.0/ number individus = 100 execution time : 3.4550392627716064
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8512.0/ number individus = 100 execution time : 3.661342144012451
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8490.0/ number individus = 100 execution time : 3.5212807655334473
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8351.0/ number individus = 100 execution time : 3.54152774810791
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8268.0/ number individus = 100 execution time : 3.4910035133361816
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8788.0/ number individus = 100 execution time : 3.6494765281677246
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8940.0/ number individus = 100 execution time : 3.470660448074341
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8897.0/ number individus = 100 execution time : 3.4882190227508545
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8911.0/ number individus = 100 execution time : 3.4617087841033936
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1000 / value = 8559.0/ number individus = 100 execution time : 3.4244346618652344
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8190.0/ number individus = 100 execution time : 4.2552809715271
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8929.0/ number individus = 100 execution time : 4.209567308425903
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8416.0/ number individus = 100 execution time : 4.185086727142334
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 7672.0/ number individus = 100 execution time : 4.3487465381622314
+weight : 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8693.0/ number individus = 100 execution time : 4.157398462295532
+weight : 995 / crossover = 0.8 / mutation = 0.02 / generations = 1200 / value = 7954.0/ number individus = 100 execution time : 4.266171932220459
+weight : 995 / crossover = 0.8 / mutation = 0.02 / generations = 1200 / value = 8528.0/ number individus = 100 execution time : 4.3516526222229
+weight : 995 / crossover = 0.8 / mutation = 0.02 / generations = 1200 / value = 8417.0/ number individus = 100 execution time : 4.433567762374878
+weight : 995 / crossover = 0.8 / mutation = 0.02 / generations = 1200 / value = 8226.0/ number individus = 100 execution time : 4.305927276611328
+weight : 995 / crossover = 0.8 / mutation = 0.02 / generations = 1200 / value = 7971.0/ number individus = 100 execution time : 4.370944023132324
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8911.0 / number individus = 100
+ execution time: 4.222317457199097
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8628.0 / number individus = 100
+ execution time: 4.275708198547363
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 9147.0 / number individus = 100
+ execution time: 4.21371603012085
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8459.0 / number individus = 100
+ execution time: 4.1369078159332275
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8218.0 / number individus = 100
+ execution time: 4.207732200622559
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8911.0 / number individus = 100
+ execution time: 4.293154716491699
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8929.0 / number individus = 100
+ execution time: 4.347922086715698
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8337.0 / number individus = 100
+ execution time: 4.204979181289673
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 9147.0 / number individus = 100
+ execution time: 4.244619607925415
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 9147.0 / number individus = 100
+ execution time: 4.445727825164795
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8536.0 / number individus = 100
+ execution time: 4.1674628257751465
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8214.0 / number individus = 100
+ execution time: 4.271887540817261
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8759.0 / number individus = 100
+ execution time: 4.215408802032471
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 9147.0 / number individus = 100
+ execution time: 4.285170793533325
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1200 / value = 8599.0 / number individus = 100
+ execution time: 4.225214958190918
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 100 / value = 8911.0 / number individus = 100
+ execution time: 0.3295578956604004
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8817.0 / number individus = 100
+ execution time: 4.887670993804932
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 9147.0 / number individus = 100
+ execution time: 5.032148599624634
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8490.0 / number individus = 100
+ execution time: 4.985078811645508
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8929.0 / number individus = 100
+ execution time: 4.992370128631592
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8897.0 / number individus = 100
+ execution time: 5.042212247848511
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8990.0 / number individus = 100
+ execution time: 5.13655424118042
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 9147.0 / number individus = 100
+ execution time: 5.069912910461426
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8759.0 / number individus = 100
+ execution time: 4.837047576904297
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 9147.0 / number individus = 100
+ execution time: 4.808472633361816
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8911.0 / number individus = 100
+ execution time: 4.824570178985596
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1400 / value = 8929.0 / number individus = 100
+ execution time: 4.841688871383667
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8380.0 / number individus = 100
+ execution time: 5.649500370025635
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8660.0 / number individus = 100
+ execution time: 5.99268651008606
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8411.0 / number individus = 100
+ execution time: 5.755359888076782
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8449.0 / number individus = 100
+ execution time: 6.223236322402954
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8308.0 / number individus = 100
+ execution time: 5.607813119888306
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8929.0 / number individus = 100
+ execution time: 5.841625928878784
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 7586.0 / number individus = 100
+ execution time: 5.666471481323242
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8592.0 / number individus = 100
+ execution time: 6.169414520263672
+weight: 995 / crossover = 0.8 / mutation = 0.01 / generations = 1600 / value = 8911.0 / number individus = 100
+ execution time: 4.7991344928741455

@@ -18,4 +18,4 @@ df = df[1:, :]  # deleting the first line
 
 sac = KnapsackProblem1(df, 100, 995, 0.8, 0.01, 10)
 # sac.generate_genome()
-sac.GA_Algorithm(2000,"Exe") #La for large scale and Lo for low scale Exe
+sac.GA_Algorithm(30,"sd",0.11) #La for large scale and Lo for low scale Exe

@@ -2,9 +2,9 @@ import random
 import time
 class DFS : 
     #constructor
-    def __init__(self,max_weight,Objects,time_limite):
+    def __init__(self,max_weight,Objetss,time_limite):
         self.weight = max_weight
-        self.Objets = Objects
+        self.Objets = Objetss
         self.best_value = 0
         self.best_solution = []
         self.time_limite = time_limite
@@ -34,8 +34,8 @@ class DFS :
     
     #Function DFS who explore all the possibilities of the problem
     def DFS(self, index, solution):
-        if(time.time() - self.start_time > self.time_limite) : 
-            return
+        # if(time.time() - self.start_time > self.time_limite) : 
+        #     return
         if index == len(self.Objets):
             total_weight = self.calculate_weight(solution)
             total_value = self.calculate_value(solution)

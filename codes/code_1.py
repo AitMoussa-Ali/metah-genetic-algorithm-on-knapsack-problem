@@ -108,7 +108,66 @@ class KnapsackProblem1:
                     child[point] = 1 - child[point]  # Flip le bit
         return childs 
     
-    def GA_Algorithm(self,max_generations,scale):
+    # def GA_Algorithm(self,max_generations,scale):
+    #     generation = 0
+    #     best_fitness = 0
+    #     fitnesses = []
+    #     self.generate_population()
+    #     all_population = []
+    #     best = 0
+    #     start_time = time.time()
+    #     while(generation < max_generations):
+    #         # if(time.time() - start_time > self.time_limit):
+    #         #     break
+    #         self.fitness()
+    #         current_best = max(self.purposes)
+    #         if(current_best > best_fitness):
+    #             best_fitness = current_best
+    #             best = generation                
+    #         next_population = []
+    #         l = 0
+    #         while(l < self.ndiv):
+    #             childs = self.crossover()
+    #             childs = self.mutation(childs)
+    #             for c in childs:
+    #                 next_population.append(c)
+    #                 l+=1
+                    
+    #         all_population.append(self.population)
+            
+    #         self.population = next_population
+    #         fitnesses.append(self.purposes)
+    #         self.purposes = []
+    #         generation+=1
+            
+    #     best_population = all_population[best]
+    #     fit = fitnesses[best]
+    #     if(max(fitnesses[best])!=0):
+    #         print("the best solution is ", "at generation ", best, " with value = ",max(fitnesses[best]))
+    #         if(scale == "La"):
+    #             index = fit.index(max(fit))
+    #             with open("results_large_scale_sol1.txt", "a") as fichier:
+    #                 msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+    #                 fichier.write(msg)
+    #                 solution = "solution is : " + str(best_population[index]) +"\n"
+    #                 fichier.write(solution)
+    #             return
+    #         if(scale == "Lo"):
+    #             index = fit.index(max(fit))
+    #             with open("results_low_scale_sol1.txt", "a") as fichier:
+    #                 msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+    #                 fichier.write(msg)
+    #                 solution = "solution is : " + str(best_population[index]) +"\n"
+    #                 fichier.write(solution)
+    #             return
+    #         if(scale == "Exe"):
+    #             with open("Execution_time.txt", "a") as fichier:
+    #                 msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) + " execution time : " +str(time.time() - start_time)+ "\n"
+    #                 fichier.write(msg)
+    #     else:
+    #         print("No solution found")
+    #     print("exe time", time.time() - start_time)
+    def GA_Algorithm(self, max_generations, scale, elitism_rate):
         generation = 0
         best_fitness = 0
         fitnesses = []
@@ -116,55 +175,82 @@ class KnapsackProblem1:
         all_population = []
         best = 0
         start_time = time.time()
-        while(generation < max_generations):
-            if(time.time() - start_time > self.time_limit):
-                break
+
+        while generation < max_generations:
             self.fitness()
             current_best = max(self.purposes)
-            if(current_best > best_fitness):
+
+            if current_best > best_fitness:
                 best_fitness = current_best
                 best = generation                
-            next_population = []
-            l = 0
-            while(l < self.ndiv):
+
+            # **Tri de la population par fitness décroissant**
+            sorted_population = [x for _, x in sorted(zip(self.purposes, self.population), reverse=True)]
+
+            # **Application de l'élitisme : conserver les meilleurs individus**
+            num_elite = int(elitism_rate * self.ndiv)  # Nombre d'individus à conserver
+            next_population = sorted_population[:num_elite]  # Ajout des meilleurs
+
+            # **Génération du reste de la population**
+            l = num_elite  # Commencer après les élites
+            while l < self.ndiv:
                 childs = self.crossover()
                 childs = self.mutation(childs)
                 for c in childs:
                     next_population.append(c)
-                    l+=1
-                    
+                    l += 1
+
             all_population.append(self.population)
-            
             self.population = next_population
             fitnesses.append(self.purposes)
             self.purposes = []
-            generation+=1
-            
+            generation += 1
+
+        # **Récupérer la meilleure génération**
         best_population = all_population[best]
         fit = fitnesses[best]
-        if(max(fitnesses[best])!=0):
-            print("the best solution is ", "at generation ", best, " with value = ",max(fitnesses[best]))
-            if(scale == "La"):
-                index = fit.index(max(fit))
-                with open("results_large_scale_sol1.txt", "a") as fichier:
-                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+
+        if max(fitnesses[best]) != 0:
+            print("The best solution is at generation", best, "with value =", max(fitnesses[best]))
+
+            index = fit.index(max(fit))
+            file_name = {
+                "La": "results_large_scale_sol1.txt",
+                "Lo": "results_low_scale_sol1.txt",
+                "Exe": "Execution_time.txt"
+            }.get(scale, None)
+
+            if file_name:
+                with open(file_name, "a") as fichier:
+                    msg = f"weight: {self.weight} / crossover = {self.crossoverRate} / mutation = {self.mutationRate} / generations = {max_generations} / value = {max(fitnesses[best])} / number individus = {self.ndiv}\n"
                     fichier.write(msg)
-                    solution = "solution is : " + str(best_population[index]) +"\n"
-                    fichier.write(solution)
-                return
-            if(scale == "Lo"):
-                index = fit.index(max(fit))
-                with open("results_low_scale_sol1.txt", "a") as fichier:
-                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
-                    fichier.write(msg)
-                    solution = "solution is : " + str(best_population[index]) +"\n"
-                    fichier.write(solution)
-                return
-            if(scale == "Exe"):
-                with open("Execution_time.txt", "a") as fichier:
-                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) + " execution time : " +str(time.time() - start_time)+ "\n"
-                    fichier.write(msg)
+
+                    if scale in ["La", "Lo"]:
+                        solution = f"solution is: {best_population[index]}\n"
+                        fichier.write(solution)
+
+                    if scale == "Exe":
+                        execution_time = time.time() - start_time
+                        fichier.write(f" execution time: {execution_time}\n")
+
         else:
             print("No solution found")
-                
-            
+
+        print("Execution time:", time.time() - start_time)
+
+             # def DFS(self, index, solution, total_weight, total_value):
+    #     # if(time.time() - self.start_time > self.time_limite) : 
+    #     #     return
+    #     if index == len(self.Objets):
+    #         total_weight = self.calculate_weight(solution)
+    #         total_value = self.calculate_value(solution)
+    #         if total_weight <= self.weight and total_value > self.best_value:
+    #             self.best_value = total_value
+    #             self.best_solution = solution.copy()
+    #         return  
+    #     if(total_weight + self.Objets[index,1] <= self.weight):
+    #         solution[index] = 1
+    #         self.DFS(index + 1, solution, total_weight + self.Objets[index,1], total_value + self.Objets[index,0])
+        
+    #     solution[index] = 0
+    #     self.DFS(index + 1, solution, total_weight, total_value)

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 #here u can the change the path to the path of the dataset
-path = "C:\\Users\\sofia\\OneDrive\\Bureau\\Projet metah\\instances_01_KP\\large_scale\\knapPI_1_100_1000_1"
+path = "C:\\Users\\sofia\\OneDrive\\Bureau\\Projet metah\\instances_01_KP\\low-dimensional\\f1_l-d_kp_10_269"
 
 # Reading the file and storing the data in a list
 with open(path, "r", encoding="utf-8") as f:
@@ -16,5 +16,5 @@ df = np.array(data, dtype=float)
 #for the data with a large scale we remove the last line because it's represent the optimal solution
 df = df[1:, :]  # deleting the first line
 
-sol = DFS(995,df,10)
+sol = DFS(269,df,60)
 sol.solve_with_dfs()
