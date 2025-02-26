@@ -4,7 +4,7 @@ import numpy as np
 from code_3 import Sac_a_dos_dfs
 
 #here u can the change the path to the path of the dataset
-path = "C:\\Users\\sofia\\OneDrive\\Bureau\\Projet metah\\instances_01_KP\\low-dimensional\\f8_l-d_kp_23_10000"
+path = "C:\\Users\\sofia\\OneDrive\\Bureau\\Projet metah\\instances_01_KP\\large_scale\\knapPI_1_100_1000_1"
 
 # Reading the file and storing the data in a list
 with open(path, "r", encoding="utf-8") as f:
@@ -20,5 +20,5 @@ df = df[1:, :]  # deleting the first line
 # sol = DFS(20,df)
 # sol.find_solution()
 
-sac_dfs = Sac_a_dos_dfs(df, 10000)
+sac_dfs = Sac_a_dos_dfs(df, 995,1)
 sac_dfs.affich()

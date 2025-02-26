@@ -52,7 +52,7 @@ class DFS :
     def solve_with_dfs(self):
         self.start_time = time.time()
         self.DFS(0,[0]*len(self.Objets))
-        print("✅ solution find with sucess :", self.best_solution," with value 🎯 = ",self.best_value)
+        print("solution find with sucess :", self.best_solution," with value = ",self.best_value)
        
         
         
