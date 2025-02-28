@@ -30,43 +30,42 @@ class KnapsackProblem1:
                     l[j] = 1
                     total_weight += self.Objects[j, 1]
 
-            self.population.append(l) #add the solution to the initial population
+            self.population.append(l.copy()) #add the solution to the initial population
             i += 1  
-            
+
             
     #Now we must define our function of fitness
+    def calculate_weight(self,solution):
+        return sum(obj[1] for obj, sol in zip(self.Objects, solution) if sol == 1)
+    def calculate_value(self,solution):
+        return sum(obj[0] for obj, sol in zip(self.Objects, solution) if sol == 1)
+    
     #If it's 0 then it's not considered as a solution (false) else we gonna calculate the value
     def fitness(self):
-        self.purposes = []
-        for p in self.population : 
-            total_weight = 0
-            total_value = 0
-            for i in range(0,len(p)):
-                total_weight = total_weight+self.Objects[i,1]*p[i] #second column represente the weight
-                total_value = total_value+self.Objects[i,0]*p[i] #first column represente the value
-            if(total_weight <= self.weight):
-                self.purposes.append(total_value) #in case where the total weight does not be over the max weight
+        self.purposes = [].copy() 
+        for p in self.population:
+            total_weight = self.calculate_weight(p)
+            total_value = self.calculate_value(p)
+            #Adding penality
+            if (total_weight > self.weight):
+                self.purposes.append(0)   #in case where the total weight is over the max weight
             else:
-                self.purposes.append(float(0)) #in case where the total weight is over the max weight
-    
-    
-    #Cette fonction permet de selectionner un individu avec une proba generer par random
-    #On utilise la methode de selction par roulette
+                self.purposes.append(total_value)   #in case where the total weight does not be over the max weight
     def select(self):
-        if sum(self.purposes) == 0:  # vérifier si la somme des fitness est nulle
-            return random.choice(self.population)  # Sélectionne un individu aléatoire
-        r = random.randint(0, int(sum(self.purposes)))
+        if sum(self.purposes) == 0:  # verifiying if the fitnesses of the population is null
+            return random.choice(self.population)  # select a random individu
+        r = random.randint(0, sum(self.purposes)) #probability
         s = 0
         i = 0
-        if r == 0:  # Gérer explicitement le cas où r == 0
-            return self.population[0]  # Choisir le premier individu
-    
+        if r == 0:  # select the first individu 
+            return self.population[0] 
+        #wheel selection
         while s < r and i < len(self.purposes):
             s += self.purposes[i]
             i += 1
         return self.population[i - 1]
         
-    #cette fonction permet de selectionner deux parents qui soit toujours different pour garantir une bonne convergence
+    #select two parents for the crossover part
     def selectParents(self):
         parent1 = self.select()
         parent2 = self.select()
@@ -81,7 +80,8 @@ class KnapsackProblem1:
         parents = self.selectParents()
         parent1 = parents['firstParent']
         parent2 = parents['secondParent']
-        childs = [parent1, parent2]
+        #In case where crossover didn't work
+        childs = [parent1.copy(), parent2.copy()]  
 
         if r < self.crossoverRate:
             child1 = []
@@ -94,88 +94,74 @@ class KnapsackProblem1:
                     child1.append(parent2[i])
                     child2.append(parent1[i])
 
-            childs = [child1,child2]
-
+            childs = [child1, child2]
         return childs
-        
+
+    #utation part
     def mutation(self, childs):
         r = random.uniform(0, 1)
-        if r < self.mutationRate:
-            for child in childs:
-                num_mutations = max(1, int(0.1 * len(child)))  # Muter 10% des gènes
-                mutation_points = random.sample(range(len(child)), num_mutations)
+        for child in childs:
+            if random.uniform(0, 1) < self.mutationRate:  
+                num_mutations = max(1, int(0.3 * len(self.Objects)))
+                mutation_points = random.sample(range(len(self.Objects)), num_mutations)
                 for point in mutation_points:
-                    child[point] = 1 - child[point]  # Flip le bit
-        return childs 
+                    child[point] = 1 - child[point]
+        return childs  
     
-    def calculate_weight(self,solution):
-        return sum(obj[1] for obj, sol in zip(self.Objects, solution) if sol == 1)
     
     
     def GA_Algorithm(self,max_generations,scale,elitism_rate):
-        generation = 0
-        best_fitness = 0
-        fitnesses = []
-        self.generate_population()
-        all_population = []
-        best = 0
         start_time = time.time()
-        while(generation < max_generations):
-            # if(time.time() - start_time > self.time_limit):
-            #     break
-            self.fitness()
-            fitnesses.append(self.purposes.copy())
-            all_population.append(self.population.copy())
-            current_best = max(self.purposes)
-            index = self.purposes.index(current_best)
-            sol = self.population[index]
-            if(current_best > best_fitness and self.calculate_weight(sol) <= self.weight ):
-                best_fitness = current_best
-                best = generation                
-            next_population = []
-            sorted_population = [x for _, x in sorted(zip(self.purposes, self.population), reverse=True)]
-            #elitism
-            num_elite = int(elitism_rate * self.ndiv)  
-            next_population = sorted_population[:num_elite]  
-            l = 0
-            while(l < self.ndiv):
+        self.generate_population()
+        self.fitness()
+        best = max(self.purposes)
+        solution = self.population[self.purposes.index(best)]
+        elite_size = max(1, int(self.ndiv * elitism_rate))  # at Minimum 1 
+        for x in range(1,max_generations):
+            l=0
+            next_pop = []
+            sorted_indices = sorted(range(len(self.purposes)), key=lambda i: self.purposes[i], reverse=True)
+            elites = [self.population[i] for i in sorted_indices[:elite_size]]
+            next_pop.extend(elites)
+            l = len(elites)
+            while(l<self.ndiv):
                 childs = self.crossover()
-                childs = self.mutation(childs)
-                for c in childs:
-                    if self.calculate_weight(c) <= self.weight:
-                        next_population.append(c)
-                        l+=1
-            self.population = next_population.copy()
-            self.purposes = []
-            generation+=1
-            
-        best_population = all_population[best]
-        fit = fitnesses[best]
-        index = fit.index(max(fit))
-        # print(fit)
-        # print(best_population)
-        # print(best_population[index])
-        if(max(fitnesses[best])!=0):
-            print("the best solution is", " at generation ", best, " with value = ",max(fitnesses[best]), "and weight : ",self.calculate_weight(best_population[index]))
+                childs_after_mutation = self.mutation(childs)
+                next_pop.append(childs_after_mutation[0])
+                l+=1
+                if(l>=self.ndiv): break
+                else:
+                    next_pop.append(childs_after_mutation[1])
+                    l+=1
+                    if(l>=self.ndiv): break
+            self.population = next_pop.copy()
+            self.fitness()
+            current_best = max(self.purposes)
+            current_solution = self.population[self.purposes.index(current_best)]
+            if(current_best>best):
+                solution = current_solution.copy()
+                best = current_best
+        if(best!=0):
+            print("value : ",best,"\nreal value : ",self.calculate_value(solution),"\nweight : ", self.calculate_weight(solution))
             if(scale == "La"):
                 with open("results_large_scale_sol1.txt", "a") as fichier:
-                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(best) + "/ number individus = "+ str(self.ndiv) +"\n"
                     fichier.write(msg)
-                    solution = "solution is : " + str(best_population[index]) +"\n"
+                    solution = "solution is : " + str(solution) +"\n"
                     fichier.write(solution)
                     print("Execution time :", time.time()-start_time)
                 return
             if(scale == "Lo"):
                 with open("results_low_scale_sol1.txt", "a") as fichier:
-                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) +"\n"
+                    msg = "capacity : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(best) + "/ number individus = "+ str(self.ndiv) +"\n"
                     fichier.write(msg)
-                    solution = "solution is : " + str(best_population[index]) +"\n"
+                    solution = "solution is : " + str(solution) +"\n"
                     fichier.write(solution)
                     print("Execution time :", time.time()-start_time)
                 return
             if(scale == "Exe"):
                 with open("Execution_time.txt", "a") as fichier:
-                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(max(fitnesses[best])) + "/ number individus = "+ str(self.ndiv) + " execution time : " +str(time.time() - start_time)+ "\n"
+                    msg = "weight : " + str(self.weight) + " / crossover = " + str(self.crossoverRate) + " / mutation = " + str(self.mutationRate) + " / generations = " + str(max_generations) + " / value = "+str(best) + "/ number individus = "+ str(self.ndiv) + " execution time : " +str(time.time() - start_time)+ "\n"
                     fichier.write(msg)
         else:
             print("No solution found")
