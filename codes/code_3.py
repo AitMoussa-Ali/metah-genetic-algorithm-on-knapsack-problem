@@ -29,7 +29,6 @@ class Sac_a_dos_dfs:
                     m_poids = poids
                 if niveau < len(self.objets):  # reste des objets 
                     pile.append((c_solution[:], niveau + 1))
-                    obj_poids, obj_valeur = self.objets[niveau]
                     c_solution[niveau] = 1
                     pile.append((c_solution[:], niveau + 1))
 
